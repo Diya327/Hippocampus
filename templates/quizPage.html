@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HippoCampus</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <nav>
+      <div id="left">
+        <img src="{{ url_for('static', filename='logo.PNG') }}" />
+        <a href="/"><h1>HippoCampus</h1></a>
+      </div>
+      <div id="right">
+        <ul>
+          <li><a href="/quiz/start">Quiz</a></li>
+          <li><a href="/analytics">Analytics</a></li>
+          <li><a href="/login" class="button">Log in</a></li>
+          <li><a href="/register" class="button">Sign up</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="questions">
+      <!-- feedback -->
+      {% if feedback %} {% if was_correct %}
+      <h2>Correct!</h2>
+      {% else %}
+      <h2>Not quite!</h2>
+      {% endif %}
+      <br>
+      <p>{{ feedback }}</p>
+      <br>
+      <a href="/quiz">Next question</a>
+
+      {% else %}
+      
+      <!-- question display -->
+      <h3>Q{{ number }}</h3>
+      <h2>{{ question }}</h2>
+      <br>
+      <!-- clickable multiple choice options -->
+      <form method="POST">
+        {% for option in options %}
+        <label>
+          <input
+            type="radio"
+            name="answer"
+            value="{{ ['A','B','C','D'][loop.index0] }}"
+            required
+          />
+          {{ option }} </label
+        ><br /><br />
+        {% endfor %}
+
+        <button type="submit">Submit</button>
+      </form>
+
+      {% endif %}
+    </div>
+  </body>
+</html>

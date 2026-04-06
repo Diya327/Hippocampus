@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HippoCampus</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <nav>
+      <div id="left">
+        <img src="{{ url_for('static', filename='logo.PNG') }}" />
+        <a href="/"><h1>HippoCampus</h1></a>
+      </div>
+      <div id="right">
+        <ul>
+          <li><a href="/quiz/start">Quiz</a></li>
+          <li><a href="/analytics">Analytics</a></li>
+          <li><a href="/login" class="button">Log in</a></li>
+          <li><a href="/register" class="button">Sign up</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="home">
+      <br /><br /><br /><br /><br />
+      <div class="row">
+        <div class="card">
+          <img src="{{ url_for('static', filename='chem.png') }}" />
+          <h3>GCSE Chemistry</h3>
+        </div>
+        <div class="card">
+          <img src="{{ url_for('static', filename='physics.png') }}" />
+          <h3>GCSE Physics</h3>
+        </div>
+        <div class="card">
+          <img src="{{ url_for('static', filename='bio.png') }}" />
+          <h3>GCSE Biology</h3>
+        </div>
+      </div>
+      <br /><br /><br /><br /><br />
+      <a href="/quiz/start">Complete your first quiz</a>
+    </div>
+  </body>
+</html>
